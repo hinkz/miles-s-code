@@ -1,0 +1,23 @@
+Menu
+Declare Easy as String
+/Easy
+ 
+
+/MENU
+ Open frmMenu
+ When btnExit clicked
+  Close Program
+ When btnDifficulty clicked
+  Show frmDifficulty
+  If btnMainMenu clicked
+    Close frmDifficulty
+    Open frmMenu
+  If btnEasy clicked
+     Difficulty = Easy
+  If btnMedium clicked
+     Difficulty = Medium
+  If btnHard clicked
+     Difficulty = Hard
+  
+  
+  
