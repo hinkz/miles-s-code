@@ -1,23 +1,41 @@
 Menu
-Declare Easy as String
-/Easy
+
  
 
 /MENU
- Open frmMenu
+Run Program
+Open frmMenu
  When btnExit clicked
   Close Program
  When btnDifficulty clicked
-  Show frmDifficulty
-  If btnMainMenu clicked
-    Close frmDifficulty
-    Open frmMenu
-  If btnEasy clicked
-     Difficulty = Easy
-  If btnMedium clicked
-     Difficulty = Medium
-  If btnHard clicked
-     Difficulty = Hard
+   Show frmDifficulty
+   If btnMainMenu clicked
+     Close frmDifficulty
+     Open frmMenu
+   If btnEasy clicked
+      Difficulty = Easy
+   If btnMedium clicked
+      Difficulty = Medium
+   If btnHard clicked
+      Difficulty = Hard
+ 
+ When btnColour clicked
+  Show frmColour
+   If btnMainMenu clicked
+    Close frmColour
+   If btnWhite clicked
+    frmGameWhite used
+   If btnBlue clicked  
+    frmGameBlue used
+   If btnGreen clicked
+    frmGameGreen used
+    
+ When btnHighScore clicked
+  Show frmHighScore
+   If btnMainMenu clicked
+    Close frmHighScore
   
-  
+ When btnControls clicked
+  Show frmControls
+   If 
   
