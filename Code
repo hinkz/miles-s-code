@@ -8,6 +8,7 @@ Open frmMenu
  When btnExit clicked
   Close Program
  When btnDifficulty clicked
+   Close frmMenu
    Show frmDifficulty
    If btnMainMenu clicked
      Close frmDifficulty
@@ -20,22 +21,221 @@ Open frmMenu
       Difficulty = Hard
  
  When btnColour clicked
+  Close frmMenu
   Show frmColour
    If btnMainMenu clicked
     Close frmColour
+    Show frmMenu
    If btnWhite clicked
-    frmGameWhite used
+    GameScreen = frmGameWhite
    If btnBlue clicked  
-    frmGameBlue used
+    GameScreen = frmGameBlue
    If btnGreen clicked
-    frmGameGreen used
+    GameScreen = frmGameGreen
     
  When btnHighScore clicked
+  Close frmMenu
   Show frmHighScore
    If btnMainMenu clicked
     Close frmHighScore
+    Show frm Menu
   
  When btnControls clicked
+  Close frmMenu
   Show frmControls
-   If 
+   If btnMainMenu clicked
+    Close frmControls
+    Open frmMenu
+   If btnChange1 clicked
+    txtPlayer1Up = Text 
+    MoveUp1 = txtPlayer1Up
+    txtPlayer1Down = Text 
+    MoveDown1 = txtPlayer1Down
+   If btnChange2 clicked
+    txtPlayer2Up = Text 
+    MoveUp2 = txtPlayer2Up
+    txtPlayer2Down = Text 
+    MoveDown2 = txtPlayer2Down
+    
+ When btnPlay clicked
+  Close frmMenu
+  Open frmPlay
+   If btnPlayervsBot clicked
+    Close frmPlay
+    Open GameScreen
+     Run GameBot
+   If btnPlayervsPlayer clicked
+    Close frmPlay
+    Open GameScreen
+     Run GamePlayer
+   If Player1Score >= HighScore 1,2,3,4,5
+    Close GameScreen
+    Open frmHighScore
+     txtHighScore 1,2,3,4,5 = Text
+     If btnMainMenu clicked
+      Close frmHighScore
+      Open frmMainMenu
+    Else
+     Close GameScreen
+     Open frmMainMenu
+   If Player2Score >= HighScore 1,2,3,4,5
+    Close GameScreen
+    Open frmHighScore
+     txtHighScore 1,2,3,4,5 = Text
+     If btnMainMenu clicked
+      Close frmHighScore
+      Open frmMainMenu
+    Else
+     Close GameScreen
+     Open frmMainMenu
+     
+"PLAYER1 CONTROLS"
+Sub
+"Move Up"
+ When MoveUp1 pressed
+ Bat1.Y = Bat1.Y +10
+End Sub
+ 
+ Sub
+  "Move Down"
+  When MoveDown1 pressed
+  Bat1.Y = Bat1.Y -10
+ End Sub
+
+"PLAYER2 CONTROLS"
+ Sub
+ "Move Up"
+  When MoveUp2 pressed
+  Bat2.Y = Bat2.Y +10
+ End Sub
+ 
+ Sub
+ "Move Down"
+  When MoveDown2 pressed
+  Bat2.y = Bat2.Y -10
+ End Sub
+
+
+ "Bat Movement Difficuiltys"
+Easy: 
+ If MoveUp or MoveDown pressed 
+  Max.Speed = 100
+  Bat.Speed = Bat.Speed + 1 per 0.001s
+  If Bat.Speed = Max.Speed 
+  then Bat.Speed = Max.Speed
+ Else While Bat.Speed > 0
+  Bat.Speed = Bat.Speed - 5 per 0.001s
+
+Medium:
+ If MoveUp or MoveDown pressed 
+  Max.Speed = 200
+  Bat.Speed = Bat.Speed + 2 per 0.001s
+  If Bat.Speed = Max.Speed 
+  then Bat.Speed = Max.Speed
+ Else While Bat.Speed > 0
+  Bat.Speed = Bat.Speed - 10 per 0.001s
   
+Hard:
+ If MoveUp or MoveDown pressed 
+  Max.Speed = 300
+  Bat.Speed = Bat.Speed + 3 per 0.001s
+  If Bat.Speed = Max.Speed 
+  then Bat.Speed = Max.Speed
+ Else While Bat.Speed > 0
+  Bat.Speed = Bat.Speed - 15 per 0.001s
+ 
+ 
+ "Ball hits Bat"
+If Ball touches Bat
+ Then
+  Ball.XVel = Ball.XVel *-1 + Bat.Speed
+  Ball.YVel = Ball.YVel *-1 - Bat.Speed
+  
+"Ball hits ceeling"
+ If Ball touches Topceeling or Bottomceeling
+  then 
+   Ball.XVel = Ball.XVel *-1
+   Ball.YVel = Ball.YVel *-1
+
+"Timer"
+ When game starts timer = 5.00
+ After 5.00 Open frmHighScore
+
+ 
+ "Scoring"
+ If Ball touches Wall1
+  then Score2 = Score2 +1
+ If Ball touches wall2
+  then Score1 = Score1 +1
+ 
+If PlayervsPlayer selected
+ If Score1 = Score2 after 5.00
+  Display "DRAW"
+  Open frmHighScore
+ If Score1 > Score2 after 5.00 
+  Display "Player 1 Wins!"
+  Open frmHighScore
+ If Score1 < Score2 after 5.00
+  Display "Player 2 Wins!"
+  Open frmHighScore
+ If Score1 = 8 
+  then Display "Player 1 Wins!" 
+  Open frmHighScore
+  pause timer copy timeleft
+  If timeleft > Highscore1,2,3,4,5 
+   then timeleft = Highscore1,2,3,4,5
+    and txt.Highscore1,2,3,4,5 = txt.Highscore1,2,3,4,5
+ If Score2 = 8 
+  then Display "Player 2 Wins!"
+  Open frmHighScore
+  pause timer copy timeleft
+  If timeleft > Highscore1,2,3,4,5 
+   then timeleft = Highscore1,2,3,4,5
+    and txt.Highscore1,2,3,4,5 = txt.Highscore1,2,3,4,5
+If PlayervsBot Selected
+ If Score1 = Score2 after 5.00
+  Display "DRAW"
+  Open frmHighScore
+ If Score1 > Score2 after 5.00 
+  Display "Player 1 Wins!"
+  Open frmHighScore
+ If Score1 < Score2 after 5.00
+  Display "Bot Wins!"
+  Open frmHighScore
+ If Score1 = 8 
+  then Display "Player 1 Wins!" 
+  Open frmHighScore
+  pause timer copy timeleft
+  If timeleft > Highscore1,2,3,4,5 
+   then timeleft = Highscore1,2,3,4,5
+    and txt.Highscore1,2,3,4,5 = txt.Highscore1,2,3,4,5
+ If Score2 = 8 
+  then Display "BotWins!"
+  Open frmHighScore
+  pause timer copy timeleft
+  If timeleft > Highscore1,2,3,4,5 
+   then timeleft = Highscore1,2,3,4,5
+    and txt.Highscore1,2,3,4,5 = txt.Highscore1,2,3,4,5 
+ 
+When game starts
+
+ Position Player1
+  Make Player1 visible
+  Bat1.X = (50,  )
+  Bat1.Y = Centre
+ Position Player2 or Bot
+  Make Player2 visible
+  Bat2.X = (-50,  )
+  Bat2.Y = Centre
+ Position Ball
+  Make Ball visible
+  Ball.X = Centre
+  Ball.Y = Centre
+ "Ball start speed and direction"
+  Ball.Speed = 10
+  Ball.Direction = random between 45 to 135 and 225 to 315
+ 
+ "Bot Movement"
+   If Ball.Location.Y > 5 And Ball.Location.Y < Player1.Height - 40 _ - Player1.Height 
+    then 
+     Bot.Location = New Point(Bot.Location.X,Ball.Location.Y)
