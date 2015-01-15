@@ -115,6 +115,9 @@ End Sub
   Bat2.y = Bat2.Y -10
  End Sub
 
+ "Bat touches edge"
+  If Bat touches x = Top or x = Bottom
+   Bat.Speed = 0
 
  "Bat Movement Difficuiltys"
 Easy: 
