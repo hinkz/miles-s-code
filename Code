@@ -239,3 +239,13 @@ When game starts
    If Ball.Location.Y > 5 And Ball.Location.Y < Player1.Height - 40 _ - Player1.Height 
     then 
      Bot.Location = New Point(Bot.Location.X,Ball.Location.Y)
+
+Power Ups
+ If PowerUp1 touches Ball then
+  Ball.Speed = 50 for 3s
+ If PowerUp2 touches Ball then
+  Player1 or Player2 Bat.Size = 25pixles for 15s
+ When Timer - 30s Make PowerUp1 or PowerUp2 visible at
+  x = Centre
+  y = Centre
+  
