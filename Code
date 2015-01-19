@@ -4,7 +4,7 @@ Menu
 
 /MENU
 Run Program
-Open frmMenu
+Make frmMenu visible
  When btnExit clicked
   Close Program
  When btnDifficulty clicked
@@ -116,7 +116,7 @@ End Sub
  End Sub
 
  "Bat touches edge"
-  If Bat touches x = Top or x = Bottom
+  If Bat touches y = Top or y = Bottom
    Bat.Speed = 0
 
  "Bat Movement Difficuiltys"
@@ -155,7 +155,7 @@ If Ball touches Bat
   Ball.YVel = Ball.YVel *-1 - Bat.Speed
   
 "Ball hits ceeling"
- If Ball touches Topceeling or Bottomceeling
+ If Ball touches Ceiling or Floor
   then 
    Ball.XVel = Ball.XVel *-1
    Ball.YVel = Ball.YVel *-1
@@ -224,11 +224,11 @@ When game starts
 
  Position Player1
   Make Player1 visible
-  Bat1.X = (50,  )
+  Bat1.X = (30,  )
   Bat1.Y = Centre
  Position Player2 or Bot
   Make Player2 visible
-  Bat2.X = (-50,  )
+  Bat2.X = (-30,  )
   Bat2.Y = Centre
  Position Ball
   Make Ball visible
