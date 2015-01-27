@@ -237,7 +237,7 @@ When game starts
   "When timer starts ball does"
   Ball moves
   Ball.Speed = 10
-  Ball.Direction = random between 45 to 135 and 225 to 315
+  Ball.Direction = random between 45° to 135° and 225° to 315°
  
  "Bot Movement"
    If Ball.Location.Y > 5 And Ball.Location.Y < Player1.Height - 40 _ - Player1.Height 
