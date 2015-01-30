@@ -121,31 +121,37 @@ End Sub
 
  "Bat Movement Difficuiltys"
 Easy: 
- If MoveUp or MoveDown pressed 
-  Max.Speed = 100
+ If MoveUp pressed Bat.Y = Bat.Y + Bat.Speed
+  else if MoveDown pressed Bat.Y = Bat.Y + Bat.Speed /-1
+   Max.Speed = 100
   Bat.Speed = Bat.Speed + 1 per 0.001s
   If Bat.Speed = Max.Speed 
   then Bat.Speed = Max.Speed
- Else While Bat.Speed > 0
-  Bat.Speed = Bat.Speed - 5 per 0.001s
+ Else While MoveUp not pressed Bat.Speed = Bat.Speed - 5 per 0.001s till Bat.Speed = 0
+ Else While MoveDown not pressed Bat.Speed = Bat.Speed +5 per 0.001s till Bat.Speed = 0
+
 
 Medium:
- If MoveUp or MoveDown pressed 
-  Max.Speed = 200
+ If MoveUp pressed Bat.Y = Bat.Y + Bat.Speed
+  else if MoveDown pressed Bat.Y = Bat.Y + Bat.Speed /-1
+   Max.Speed = 200
   Bat.Speed = Bat.Speed + 2 per 0.001s
   If Bat.Speed = Max.Speed 
   then Bat.Speed = Max.Speed
- Else While Bat.Speed > 0
-  Bat.Speed = Bat.Speed - 10 per 0.001s
+ Else While MoveUp not pressed Bat.Speed = Bat.Speed - 10 per 0.001s till Bat.Speed = 0
+ Else While MoveDown not pressed Bat.Speed = Bat.Speed +10 per 0.001s till Bat.Speed = 0
+ 
   
 Hard:
- If MoveUp or MoveDown pressed 
-  Max.Speed = 300
+ If MoveUp pressed Bat.Y = Bat.Y + Bat.Speed
+  else if MoveDown pressed Bat.Y = Bat.Y + Bat.Speed /-1
+   Max.Speed = 300
   Bat.Speed = Bat.Speed + 3 per 0.001s
   If Bat.Speed = Max.Speed 
   then Bat.Speed = Max.Speed
- Else While Bat.Speed > 0
-  Bat.Speed = Bat.Speed - 15 per 0.001s
+ Else While MoveUp not pressed Bat.Speed = Bat.Speed - 15 per 0.001s till Bat.Speed = 0
+ Else While MoveDown not pressed Bat.Speed = Bat.Speed +15 per 0.001s till Bat.Speed = 0
+
  
  
  "Ball hits Bat"
