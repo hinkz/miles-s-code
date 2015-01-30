@@ -168,7 +168,11 @@ If Ball touches Bat
 
 "Timer"
  When game starts timer = 5.00
+ Score1 = 0
+ Score2 = 0
  After 5.00 Open frmHighScore
+ 
+ 
 
  
  "Scoring"
@@ -189,7 +193,7 @@ If PlayervsPlayer selected
   Open frmHighScore
  If Score1 = 8 
   then Display "Player 1 Wins!" 
-  Open frmHighScore
+  Open frmHighScore and FileHighScore
   pause timer copy timeleft
   If timeleft > Highscore1,2,3,4,5 
    then timeleft = Highscore1,2,3,4,5
@@ -241,7 +245,6 @@ When game starts
   Ball.X = Centre
   Ball.Y = Centre
   "When timer starts ball does"
-  Ball moves
   Ball.Speed = 10
   Ball.Direction = random between 45° to 135° and 225° to 315°
  
@@ -250,12 +253,13 @@ When game starts
     then 
      Bot.Location = New Point(Bot.Location.X,Ball.Location.Y)
 
-Power Ups
+"Power Ups"
+ When Timer - 30s Make PowerUp1 or PowerUp2 visible at
+  x = Centre
+  y = Centre
  If PowerUp1 touches Ball then
   Ball.Speed = 50 for 3s
  If PowerUp2 touches Ball then
   Player1 or Player2 Bat.Size = 25pixles for 15s
- When Timer - 30s Make PowerUp1 or PowerUp2 visible at
-  x = Centre
-  y = Centre
+
   
